@@ -54,12 +54,9 @@ class IndexController extends Zend_Controller_Action
 			} else {
 				$form->populate($formData);
 			}
-		
-		
 		}
+    }
 
-	}
-	
     public function closeAction()
     {
 		$id = $this->getRequest()->getParam('id');
@@ -81,14 +78,48 @@ class IndexController extends Zend_Controller_Action
 			$this->view->ticket = $t;
 		}
     }
+	
 
-    public function testAction()
+    public function commentAction()
     {
-        // action body
+        $form = new Application_Form_Comment();
+		$form->submit->setLabel('Add');
+		$this->view->form = $form;
+		
+		$em = $this->_em;
+		
+		$ticket_id = $this->getRequest()->getParam('id');
+		$ticket = $em->find('Default_Model_Ticket', $ticket_id);
+		
+		$comments = $ticket->getComments();
+		$this->view->comments = $comments;
+		
+		if ($this->getRequest()->isPost()) {
+			$formData = $this->getRequest()->getPost();
+			if ($form->isValid($formData)) {	
+				$user = $form->getValue('user');
+				$content = $form->getValue('content');
+				
+				$posted = new DateTime();
+				
+				$c = new Default_Model_Comment;
+				$c->setUser($user);
+				$c->setPosted($posted);
+				$c->setContent($content);
+				$c->setTicket($ticket);
+				
+				$em->persist($c);
+				$em->flush();
+				
+				$this->_helper->redirector('index');
+			} else {
+				$form->populate($formData);
+			}
+		}
     }
-
-
 }
+
+
 
 
 

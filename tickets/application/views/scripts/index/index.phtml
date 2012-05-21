@@ -14,11 +14,11 @@ $array_priority = array(
 	<?php echo $array_priority[$tickets->getPriority()]; ?></span></p>
 	<p><b>Category : </b><?php echo $this->escape($tickets->getCategory()); ?></p>
 	<p><b>Content : </b><?php echo $this->escape($tickets->getContent()); ?></p>
+	<a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'comment', 'id'=>$tickets->getId()));?>">Comments</a><br />
 	<?php 	if($tickets->getClosed() != "" ) { 
 					echo "<h3>TICKET CLOS</h3>"; 
 				} else { ?>
 					<a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'close', 'id'=>$tickets->getId()));?>">Close ticket</a>
 				<?php } ?>
-				</h3>
 </div>
 <?php endforeach; ?>

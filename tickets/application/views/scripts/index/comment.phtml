@@ -1,0 +1,11 @@
+<?php
+	$this->title = "View and add comments";
+	$this->headTitle($this->title);	?>
+	<div class="form"><?php echo $this->form;?></div>
+
+<?php 	foreach($this->comments as $comment) : ?>
+			<div class="ticket">
+				<b><?php echo $this->escape($comment->getUser()); ?></b>
+				<?php echo $this->escape($comment->getContent()); ?>
+			</div>
+<?php 	endforeach; ?>

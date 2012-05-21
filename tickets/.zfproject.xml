@@ -13,11 +13,13 @@
           <actionMethod actionName="new"/>
           <actionMethod actionName="close"/>
           <actionMethod actionName="test"/>
+          <actionMethod actionName="comment"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Ticket"/>
+        <formFile formName="Comment"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
@@ -42,6 +44,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="test"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="comment"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
@@ -82,6 +87,7 @@
             <testApplicationActionMethod forActionName="new"/>
             <testApplicationActionMethod forActionName="close"/>
             <testApplicationActionMethod forActionName="test"/>
+            <testApplicationActionMethod forActionName="comment"/>
           </testApplicationControllerFile>
         </testApplicationControllerDirectory>
       </testApplicationDirectory>
