@@ -10,7 +10,7 @@ class IndexController extends Zend_Controller_Action
     }
 
     public function indexAction()
-    {	
+    {
 		$em = $this->_em;
 		
 		$query_t = $em->createQuery('SELECT t FROM Default_Model_Ticket t');
@@ -34,6 +34,7 @@ class IndexController extends Zend_Controller_Action
 				$category = $form->getValue('category');
 				$priority = $form->getValue('priority');
 				$content = $form->getValue('content');
+				
 				$created = new DateTime();
 				
 				$em = $this->_em;
@@ -53,9 +54,45 @@ class IndexController extends Zend_Controller_Action
 			} else {
 				$form->populate($formData);
 			}
+		
+		
+		}
+
+	}
+	
+    public function closeAction()
+    {
+		$id = $this->getRequest()->getParam('id');
+		$t = $this->_em->find('Default_Model_Ticket', $id);
+		
+		if ($this->getRequest()->isPost()) {
+			$close = $this->getRequest()->getPost('close');
+			if ($close == 'Yes') {
+				$closed = 1;
+				$em = $this->_em;
+				
+				$t->setClosed($closed);
+				
+				$em->persist($t);
+				$em->flush();
+			}
+		$this->_helper->redirector('index');
+		} else {
+			$this->view->ticket = $t;
 		}
     }
+
+    public function testAction()
+    {
+        // action body
+    }
+
+
 }
+
+
+
+
 
 
 

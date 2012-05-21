@@ -1,0 +1,15 @@
+<?php
+$this->title = "Close a ticket";
+$this->headTitle($this->title);
+?>
+
+<p>Are you sure that you want to close the ticket #<?php echo $this->ticket->getId(); ?> ? </p>
+
+<form action="<?php echo $this->url(array('action'=>'close')); ?>" method="post">
+
+<div>
+<input type="hidden" name="id" value="<?php echo $this->ticket->getId(); ?>" />
+<input type="submit" name="close" value="Yes" />
+<input type="submit" name="close" value="No" />
+</div>
+</form>
