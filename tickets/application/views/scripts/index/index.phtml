@@ -1,0 +1,24 @@
+<?php $this->title = "All tickets";
+$this->headTitle($this->title); 
+$array_priority = array(
+	1 => "LOW",
+	2 => "MEDIUM",
+	3 => "HIGH"); ?>
+
+<?php foreach($this->tickets as $tickets) : ?>
+<div class="ticket">
+	<h3><b>Ticket #<?php echo $this->escape($tickets->getId()); ?></b></h3>
+	<p><b>Name : </b><?php echo $this->escape($tickets->getName()); ?></p>
+	<p><b>Opened by</b> <?php echo $this->escape($tickets->getUser()); ?></p>
+	<p><b>Priority : </b><span class="priority<?php echo $tickets->getPriority(); ?>">
+	<?php echo $array_priority[$tickets->getPriority()]; ?></span></p>
+	<p><b>Category : </b><?php echo $this->escape($tickets->getCategory()); ?></p>
+	<p><b>Content : </b><?php echo $this->escape($tickets->getContent()); ?></p>
+	<?php 	if($tickets->getClosed() != "" ) { 
+					echo "<h3>TICKET CLOS</h3>"; 
+				} else { ?>
+					<a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'close', 'id'=>$tickets->getId()));?>">Close ticket</a>
+				<?php } ?>
+				</h3>
+</div>
+<?php endforeach; ?>

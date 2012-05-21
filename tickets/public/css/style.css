@@ -1,0 +1,79 @@
+body,html {
+font-family:Calibri, sans-serif;
+background-color:#EEEEEE;
+color:#222222;
+}
+h1 {
+font-size:1.4em;
+}
+h3 {
+font-size:1.4em;
+margin:3px;
+color:black;
+}
+a {
+color:#FF0000;
+}
+div.ticket {
+border:1px solid #999999;
+margin:auto;
+margin-bottom:5px;
+padding-left:5px;
+padding-bottom:5px;
+width:50%;
+background-color:#CCCCCC;
+}
+div.ticket p {
+margin:1px;
+}
+div.title {
+margin:auto;
+width:30%;
+text-align:center;
+border:1px solid #999999;
+margin-bottom:30px;
+background-color:#BBBBBB;
+}
+div.header {
+background-color:#444444;
+color:#EEEEEE;
+border:1px solid white;
+padding-left:5px;
+margin-bottom:20px;
+}
+
+.priority1 {
+color:#00FF00;
+font-weight:bold;
+}
+
+.priority2 {
+color:#FFD000;
+font-weight:bold;
+}
+
+.priority3 {
+color:#FF0000;
+font-weight:bold;
+}
+
+.ticket_header{
+font-weight:bold;
+}
+
+/* style form */
+form dt {
+width: 100px;
+display: block;
+float: left;
+clear: left;
+}
+form dd {
+margin-left: 0;
+float: left;
+}
+form #submitbutton {
+margin-top: 8px;
+margin-left: 100px;
+width:200px;
+}
